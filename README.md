@@ -40,4 +40,6 @@ cd Fsociety/
 
 sudo python FsocietyDDoS.py
 
-![fsociety](https://github.com/user-attachments/assets/75a9e713-3a05-4596-ba71-3ef726240562)
+
+
+![Screenshot 2025-06-29 000141](https://github.com/user-attachments/assets/7faa033e-e50a-4fe0-b46b-49ad4ca7f074)
