@@ -1,2 +1,1 @@
 cd Fsociety
-sudo python 
