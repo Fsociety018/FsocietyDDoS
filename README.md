@@ -37,4 +37,7 @@ cd Fsociety/
 
 
 
+
 sudo python FsocietyDDoS.py
+
+![fsociety](https://github.com/user-attachments/assets/75a9e713-3a05-4596-ba71-3ef726240562)
