@@ -43,3 +43,24 @@ sudo python FsocietyDDoS.py
 
 
 ![Screenshot 2025-06-29 000141](https://github.com/user-attachments/assets/7faa033e-e50a-4fe0-b46b-49ad4ca7f074)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
