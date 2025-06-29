@@ -1,0 +1,1 @@
+sudo python FsocietyDDoS.py
