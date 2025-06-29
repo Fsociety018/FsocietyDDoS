@@ -1,0 +1,2 @@
+cd Fsociety
+sudo python 
