@@ -140,7 +140,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Fsociety")
         self.setGeometry(200, 200, 600, 600)
-        self.setStyleSheet("QMainWindow { background-color: #191919; color: white; border-radius: 5px; }")
+        self.setStyleSheet("QMainWindow { background-color: #000000; color: white; border-radius: 5px; }")
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -149,20 +149,20 @@ class MainWindow(QMainWindow):
 
         self.log_output = QTextEdit()
         self.log_output.setReadOnly(True)
-        self.log_output.setStyleSheet("background-color: #191919; color: #FF0000; border: 1px solid #FF0000; border-radius: 5px;")
+        self.log_output.setStyleSheet("background-color: #ffffff; color: #FF0000; border: 5px solid #FF0000; border-radius: 10px;")
         layout.addWidget(self.log_output)
 
         self.image_label = QLabel()
         self.image_label.setAlignment(Qt.AlignCenter)
-        self.image_label.setStyleSheet("background-color: #191919;")
+        self.image_label.setStyleSheet("background-color: #000000;")
         layout.addWidget(self.image_label)
 
-        image_url = "https://i.pinimg.com/736x/30/b9/46/30b94658f685ffd183c8c442d2973d30.jpg"
+        image_url = "https://static.ts.360.com/blog/wp-content/uploads/2016/08/160822-Post-fsociety-1.png"
         self.load_image(image_url)
 
         slogan_label = QLabel("WE ARE FINALLY FREE. WE ARE FINALLY AWARE.")
         slogan_label.setAlignment(Qt.AlignCenter)
-        slogan_label.setStyleSheet("color: #FF0000; font-size: 14px; font-weight: bold;")
+        slogan_label.setStyleSheet("color: #ff0000; font-size: 14px; font-weight: bold;")
         layout.addWidget(slogan_label)
 
         title_label = QLabel("FSOCIETY")
@@ -170,29 +170,29 @@ class MainWindow(QMainWindow):
         title_label.setStyleSheet("color: white; font-size: 24px; font-weight: bold;")
         layout.addWidget(title_label)
 
-        self.url_label = QLabel("Target URL:")
+        self.url_label = QLabel("URL de destino:")
         self.url_label.setAlignment(Qt.AlignCenter)
-        self.url_label.setStyleSheet("color: #FF0000;")
+        self.url_label.setStyleSheet("color: #ff0000;")
         layout.addWidget(self.url_label)
 
         self.url_input = QLineEdit()
         self.url_input.setFixedWidth(300)
-        self.url_input.setStyleSheet("background-color: #2F2F2F; color: white; border: 1px solid #FF0000; border-radius: 5px;")
+        self.url_input.setStyleSheet("background-color: #1e5ed6; color: white; border: 1px solid #ff0000; border-radius: 5px;")
         layout.addWidget(self.url_input, alignment=Qt.AlignCenter)
 
-        self.requests_label = QLabel("Number of Requests:")
+        self.requests_label = QLabel("Número de solicitudes :")
         self.requests_label.setAlignment(Qt.AlignCenter)
-        self.requests_label.setStyleSheet("color: #FF0000;")
+        self.requests_label.setStyleSheet("color: #ff0000;")
         layout.addWidget(self.requests_label)
 
         self.requests_input = QLineEdit()
         self.requests_input.setFixedWidth(300)
-        self.requests_input.setStyleSheet("background-color: #2F2F2F; color: white; border: 1px solid #FF0000; border-radius: 5px;")
+        self.requests_input.setStyleSheet("background-color: #1e5ed6; color: white; border: 1px solid #ff0000; border-radius: 5px;")
         layout.addWidget(self.requests_input, alignment=Qt.AlignCenter)
 
         self.start_button = QPushButton("Start")
         self.start_button.setFixedWidth(100)
-        self.start_button.setStyleSheet("background-color: #FF0000; color: white; border-radius: 5px;")
+        self.start_button.setStyleSheet("background-color: #ff0000; color: white; border-radius: 5px;")
         self.start_button.clicked.connect(self.start_attack)
         layout.addWidget(self.start_button, alignment=Qt.AlignCenter)
 
@@ -207,7 +207,7 @@ class MainWindow(QMainWindow):
             response.raise_for_status()
             pixmap = QPixmap()
             pixmap.loadFromData(BytesIO(response.content).getvalue())
-            self.image_label.setPixmap(pixmap.scaled(400, 400, Qt.KeepAspectRatio))
+            self.image_label.setPixmap(pixmap.scaled(600, 600, Qt.KeepAspectRatio))
         except Exception as e:
             self.log_message(f"Image load error: {e}")
 
@@ -216,19 +216,19 @@ class MainWindow(QMainWindow):
         try:
             num_requests = int(self.requests_input.text())
         except ValueError:
-            QMessageBox.critical(self, "Fsociety", "Number of requests must be an integer!")
+            QMessageBox.critical(self, "Fsociety", "¡El número de solicitudes debe ser un número entero!")
             return
 
         if not target_url or num_requests <= 0:
-            QMessageBox.critical(self, "Fsociety", "Enter a valid URL and number of requests!")
+            QMessageBox.critical(self, "Fsociety", "¡Ingrese una URL válida y número de solicitudes!")
             return
 
-        self.log_message("DDoS attack started. Target will be crushed!")
+        self.log_message("Ataque DDoS iniciado. ¡El objetivo será aplastado!")
 
         self.attack_thread = AttackThread(target_url, num_requests)
         self.attack_thread.log_signal.connect(self.log_message)
         self.attack_thread.start()
-        QMessageBox.information(self, "Fsociety", "Attack has begun! Check the logs!")
+        QMessageBox.information(self, "Fsociety", "¡El ataque ha comenzado! ¡Revisen los registros!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
